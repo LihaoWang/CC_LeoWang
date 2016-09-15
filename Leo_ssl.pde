@@ -1,0 +1,20 @@
+//Title: The lated announced phone; leo Wang
+size(1080,720);
+background(0,0,0);
+noFill();
+stroke(#C9C9C9);
+strokeWeight(3);
+rect(550,290,160,70,180);
+rect(500,250,600,500,100,0,0,0);
+rect(490,240,600,500,110,0,0,0);
+ellipse(583,325,40,40);
+ellipse(680,325,30,30);
+strokeWeight(2);
+ellipse(740,325,15,15);
+strokeWeight(3);
+ellipse(780,325,30,30);
+line(487,450,487,550);
+textSize(40);
+text("Two cameras that shoot as one.",220,160);
+textSize(30);
+text("iPhone 7 Plus Camera",370,100);
