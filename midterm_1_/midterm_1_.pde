@@ -6,10 +6,11 @@ PImage img4;
 PImage img5;
 PImage img6;
 PImage img7;
+PImage img8;
 String state="welcome";
 int bgc=0;
 int x;
-//define the start of cars
+//define the start point of cars
 int caronespeed=1000;
 int carspeed=1200;
 int cartwospeed=1500;
@@ -20,10 +21,8 @@ int carsixspeed=1500;
 int carsevenspeed=1300;
 int careightspeed=1700;
 int carninespeed=1300;
-float speed=0.1;
 int a;
-float bossspeed=1000;
-//location of start point
+//location of cars
 float location=320;
 float locationone=430;
 float locationtwo=540;
@@ -34,25 +33,21 @@ float locationsix=820;
 float locationseven=940;
 float locationeight=220;
 float locationnine=20;
-//counters
-int count=0;
-int countone=0;
-int counttwo=0;
 
 
 void setup(){
  size(1000,1000); 
- textAlign(CENTER);
- img=loadImage("car.png");
- img1=loadImage("man.png");
+ img=loadImage("car4.png");
+ img1=loadImage("intro1.jpg");
  img2=loadImage("Car1.png");
  img3=loadImage("man1.png");
  img4=loadImage("car2.png");
  img5=loadImage("start.jpg");
  img6=loadImage("intro.jpg");
  img7=loadImage("man2.png");
-}
+ img8=loadImage("gameover.jpg");
 
+}
 
 void draw(){
   background(bgc);
@@ -63,9 +58,10 @@ void draw(){
   image(img5,0,0);
   }
   if (state=="gameone"){
-    bgc=255;
-    fill(0);
     image(img6,0,0);
+  }
+  else if (state=="gametwo"){
+   image(img1,0,0); 
   }
   
    if (state=="gameonestart"){
@@ -88,6 +84,85 @@ void draw(){
       image(img2,carninespeed=carninespeed-4,locationnine,120,50);
       
       //if person hits the car, then go to end  
+      touch();
+      //car rotation
+      rotation();  
+    }
+    else if (state=="gametwostart"){
+      bgc=#FFFFFF;
+       for(x=100;x<=1000;x=x+100){
+    stroke(0);
+    strokeWeight(3);
+    line(0,x,1000,x);
+  }
+      image(img7,5,mouseY,80,80);
+      image(img,caronespeed=caronespeed-5,location,120,50);
+      image(img,carspeed=carspeed-3,locationone,120,50);
+      image(img,cartwospeed=cartwospeed-4,locationtwo,120,50);
+      image(img,carthreespeed=carthreespeed-3,locationthree,120,50);
+      image(img,carfourspeed=carfourspeed-4,locationfour,120,50);
+      image(img,carfivespeed=carfivespeed-5,locationfive,150,62);
+      image(img,carsixspeed=carsixspeed-4,locationsix,120,50);
+      image(img,carsevenspeed=carsevenspeed-3,locationseven,130,54);
+      image(img,careightspeed=careightspeed-3,locationeight,100,42);
+      image(img,carninespeed=carninespeed-4,locationnine,120,50);
+      //car rotation
+      rotation();
+      //if person hits the car, then go to end  
+      touch();
+      
+    }
+    
+if (state=="gameoneend"){
+    image(img8,0,0);
+}
+}
+
+
+void keyPressed(){
+  if(key=='1'){
+    state="gameone";
+  }
+  else if(key=='2'){
+    state="gametwo";
+  }
+}
+
+void mousePressed(){
+  if (state=="gameone"){
+    state="gameonestart";
+  } 
+  else if (state=="gametwo"){
+    state="gametwostart";
+  }
+}
+
+void endgame(){
+  state="gameoneend";
+  caronespeed=1000;
+  carspeed=1200;
+  cartwospeed=1500;
+  carthreespeed=1500;
+  carfourspeed=1600;
+  carfivespeed=1900;
+  carsixspeed=1500;
+  carsevenspeed=1300;
+  careightspeed=1700;
+  carninespeed=1300;
+  location=random(300,340);
+  locationone=random(410,440);
+  locationtwo=random(510,540);
+  locationthree=random(610,645);
+  locationfour=random(710,740);
+  locationfive=random(110,130);
+  locationsix=random(810,835);
+  locationseven=random(915,940);
+  locationeight=random(210,240);
+  locationnine=random(10,40);
+}
+
+void touch(){
+ //if person hits the car, then go to end  
       if (mouseY>=location-50 && caronespeed<=50 && mouseY<=location+50 && caronespeed>=-80){
         endgame();
       }
@@ -122,33 +197,33 @@ void draw(){
       }
       if(mouseY>=locationnine-50 && mouseY<=locationnine+50 && carninespeed<=50 && carninespeed>=-80){
         endgame();
-      } 
+      }  
+  
+}
+
+void rotation(){
       //car rotation
       if(caronespeed<-120){
         caronespeed=1000;
         location=random(300,340);
-        count=count+1;
       }
       if(carspeed<-120){
         carspeed=1200;
         locationone=random(410,440);
-        countone=countone+1;
       }
       if(cartwospeed<-120){
         cartwospeed=1500;
         locationtwo=random(510,540);
-        counttwo=counttwo+1;
       }
-      if(carthreespeed<-150){
+      if(carthreespeed<-120){
         carthreespeed=1500;
-        locationthree=random(610,645);
-        
+        locationthree=random(610,645);        
       }
       if(carfourspeed<-120){
         carfourspeed=1600;
         locationfour=random(710,740);
       }
-      if(carfivespeed<-120){
+      if(carfivespeed<-150){
         carfivespeed=1900;
         locationfive=random(110,130);
       }
@@ -167,82 +242,6 @@ void draw(){
       if(carninespeed<-120){
         carninespeed=1300;
         locationnine=random(10,40);
-      }
-      /*if (count>=6 && countone>=5 && counttwo>=5){
-        state="gameoneboss";
-      }
-      
-      for(int a=20;a<height;a=a+90){
-      image(img,b=b-speed,a,120,120);
-      if (keyPressed==true){
-        speed=1;
-      }
-      }
-     if (b<0){
-        state="gameoneend";
-        b=1000;
-        speed=0.1;
-        } */
-   
-    }
-
-    
-  if (state=="gameoneboss"){
-    image(img1,10,mouseY,80,80);
-    for(int a=20;a<height;a=a+90){
-      image(img,bossspeed=bossspeed-speed,a,120,120);
-      if (keyPressed==true){
-        speed=1;
-      }
-      }
-     if (bossspeed<0){
-        state="gameoneend";
-        bossspeed=1000;
-        speed=0.1;
-        } 
-      count=0;
-  }
-    
-if (state=="gameoneend"){
-    bgc=0;
-    fill(255);
-     text("game1 end",width/2,height/2);
-}
-}
-
-
-void keyPressed(){
-  if(key=='1'){
-    state="gameone";
-  }
-}
-
-void mousePressed(){
-  if (state=="gameone"){
-    state="gameonestart";
-  } 
-}
-
-void endgame(){
-  state="gameoneend";
-  caronespeed=1000;
-  carspeed=1200;
-  cartwospeed=1500;
-  carthreespeed=1500;
-  carfourspeed=1600;
-  carfivespeed=1900;
-  carsixspeed=1500;
-  carsevenspeed=1300;
-  careightspeed=1700;
-  carninespeed=1300;
-  location=random(300,340);
-  locationone=random(410,440);
-  locationtwo=random(510,540);
-  locationthree=random(610,645);
-  locationfour=random(710,740);
-  locationfive=random(110,130);
-  locationsix=random(810,835);
-  locationseven=random(915,940);
-  locationeight=random(210,240);
-  locationnine=random(10,40);
+      } 
+  
 }
