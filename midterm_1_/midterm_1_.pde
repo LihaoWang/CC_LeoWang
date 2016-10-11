@@ -1,3 +1,8 @@
+//img3: http://pixelartmaker.com/art/44903f12ad2156e.png
+//img7: https://dribbble.com/jenkm
+//NAME: lihao Wang
+//title: watch out!
+
 PImage img;
 PImage img1;
 PImage img2;
@@ -34,9 +39,9 @@ float locationseven=940;
 float locationeight=220;
 float locationnine=20;
 
-
 void setup(){
  size(1000,1000); 
+ //load images
  img=loadImage("car4.png");
  img1=loadImage("intro1.jpg");
  img2=loadImage("Car1.png");
@@ -53,24 +58,25 @@ void draw(){
   background(bgc);
   textSize(30);
   fill(255);
-
   if (state=="welcome"){
-  image(img5,0,0);
+  image(img5,0,0); //welcome page
   }
   if (state=="gameone"){
-    image(img6,0,0);
+    image(img6,0,0); //game one introduction
   }
   else if (state=="gametwo"){
-   image(img1,0,0); 
+   image(img1,0,0); //game two introduction
   }
   
    if (state=="gameonestart"){
      bgc=#87CEFA;
        for(x=100;x<=1000;x=x+100){
+    //draw the horizantal lines
     stroke(255);
     strokeWeight(3);
     line(0,x,1000,x);
   }
+  //draw the 10 cars and their speed
       image(img3,5,mouseY,80,80);
       image(img2,caronespeed=caronespeed-5,location,120,50);
       image(img4,carspeed=carspeed-3,locationone,120,50);
@@ -89,12 +95,14 @@ void draw(){
       rotation();  
     }
     else if (state=="gametwostart"){
+      //draw the horizantal lines
       bgc=#FFFFFF;
        for(x=100;x<=1000;x=x+100){
     stroke(0);
     strokeWeight(3);
     line(0,x,1000,x);
   }
+  //draw the 10 cars and their speed
       image(img7,5,mouseY,80,80);
       image(img,caronespeed=caronespeed-5,location,120,50);
       image(img,carspeed=carspeed-3,locationone,120,50);
@@ -114,17 +122,17 @@ void draw(){
     }
     
 if (state=="gameoneend"){
-    image(img8,0,0);
+    image(img8,0,0);//end page & select the character
 }
 }
 
 
 void keyPressed(){
   if(key=='1'){
-    state="gameone";
+    state="gameone"; //if press 1, go to game one introduction
   }
   else if(key=='2'){
-    state="gametwo";
+    state="gametwo";//if press 2, go to game two introduction
   }
 }
 
@@ -138,6 +146,7 @@ void mousePressed(){
 }
 
 void endgame(){
+  //when the game ends, return to the start point
   state="gameoneend";
   caronespeed=1000;
   carspeed=1200;
