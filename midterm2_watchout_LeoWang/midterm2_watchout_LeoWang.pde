@@ -1,8 +1,12 @@
 //img3: http://pixelartmaker.com/art/44903f12ad2156e.png
 //img7: https://dribbble.com/jenkm
+//bgm: https://www.youtube.com/watch?v=QwZ_VKBTjWo
 //NAME: lihao Wang
 //title: watch out!
 
+import ddf.minim.*;
+AudioPlayer player;
+Minim minim;
 PImage img;
 PImage img1;
 PImage img2;
@@ -57,6 +61,9 @@ void setup(){
  img6=loadImage("intro.jpg");
  img7=loadImage("man2.png");
  img8=loadImage("gameover.jpg");
+ minim=new Minim(this);
+ player=minim.loadFile("shuaicongge.mp3");
+ player.loop();
 }
 
 void draw(){
