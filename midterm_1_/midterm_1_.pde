@@ -1,8 +1,3 @@
-//img3: http://pixelartmaker.com/art/44903f12ad2156e.png
-//img7: https://dribbble.com/jenkm
-//NAME: lihao Wang
-//title: watch out!
-
 PImage img;
 PImage img1;
 PImage img2;
@@ -44,10 +39,14 @@ float locationseven=940;
 float locationeight=220;
 float locationnine=20;
 
+
 void setup(){
  size(1000,1000); 
+<<<<<<< HEAD
  textAlign(CENTER);
  //load images
+=======
+>>>>>>> parent of c5b064b... change
  img=loadImage("car4.png");
  img1=loadImage("intro1.jpg");
  img2=loadImage("Car1.png");
@@ -63,25 +62,24 @@ void draw(){
   background(bgc);
   textSize(30);
   fill(255);
+
   if (state=="welcome"){
-  image(img5,0,0); //welcome page
+  image(img5,0,0);
   }
   if (state=="gameone"){
-    image(img6,0,0); //game one introduction
+    image(img6,0,0);
   }
   else if (state=="gametwo"){
-   image(img1,0,0); //game two introduction
+   image(img1,0,0); 
   }
   
    if (state=="gameonestart"){
      bgc=#87CEFA;
        for(x=100;x<=1000;x=x+100){
-    //draw the horizantal lines
     stroke(255);
     strokeWeight(3);
     line(0,x,1000,x);
   }
-  //draw the 10 cars and their speed
       image(img3,5,mouseY,80,80);
       image(img2,caronespeed=caronespeed-3,location,120,50);
       image(img4,carspeed=carspeed-3,locationone,120,50);
@@ -99,14 +97,12 @@ void draw(){
       rotation();  
     }
     else if (state=="gametwostart"){
-      //draw the horizantal lines
       bgc=#FFFFFF;
        for(x=100;x<=1000;x=x+100){
     stroke(0);
     strokeWeight(3);
     line(0,x,1000,x);
   }
-  //draw the 10 cars and their speed
       image(img7,5,mouseY,80,80);
       image(img,caronespeed=caronespeed-5,location,120,50);
       image(img,carspeed=carspeed-3,locationone,120,50);
@@ -126,6 +122,7 @@ void draw(){
     }
     
 if (state=="gameoneend"){
+<<<<<<< HEAD
     endtimer=millis();
     textSize(50);
     fill(0);
@@ -136,16 +133,24 @@ if (state=="gameoneend"){
     if ((endtimer/1000)-(gtimer/1000)>5){    
     image(img8,0,0);//end page & select the character
     }
+=======
+    image(img8,0,0);
+>>>>>>> parent of c5b064b... change
 }
 }
 
 
 void keyPressed(){
   if(key=='1'){
+<<<<<<< HEAD
     state="gameone"; //if press 1, go to game one introduction
 }
+=======
+    state="gameone";
+  }
+>>>>>>> parent of c5b064b... change
   else if(key=='2'){
-    state="gametwo";//if press 2, go to game two introduction
+    state="gametwo";
   }
 }
 
@@ -163,7 +168,6 @@ void mousePressed(){
 }
 
 void endgame(){
-  //when the game ends, return to the start point
   state="gameoneend";
   gtimer=millis();
   displaytimer=(gtimer-itimer)/1000;
