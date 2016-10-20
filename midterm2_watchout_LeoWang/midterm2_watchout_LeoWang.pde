@@ -140,7 +140,7 @@ if (state=="gameoneend"){
     //print("you survive"+displaytimer);
     text("You survived for "+displaytimer+" seconds",500,500);
     println(gtimer/1000);
-    if ((endtimer/1000)-(gtimer/1000)>5){    
+    if ((endtimer/1000)-(gtimer/1000)>3){    
     image(img8,0,0);//end page & select the character
     }
 }
