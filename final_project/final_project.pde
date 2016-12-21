@@ -141,6 +141,7 @@ void draw() {
     song1.play();
     alarm.pause();
     textAlign(CENTER);
+    imageMode(CORNER);
     image(begin, 0, 0, 1000, 700);
     textFont(myFont);
     textSize(60);
@@ -958,18 +959,27 @@ void mousePressed() {
       scene=1;
       recover();
       hp=15;
+      puzzle_solve="False";
+      continue_button="False";
+      dooropen.close();
     }
   } else if (scene==12) {
     if (mouseX>300&&mouseX<700&&mouseY>390&&mouseY<450) {
       scene=1;
       recover();
       hp=15;
+      puzzle_solve="False";
+      continue_button="False";
+      dooropen.close();
     }
   } else if (scene==10) {
     if (mouseX>300&&mouseX<700&&mouseY>390&&mouseY<450) {
       scene=1;
       recover();
       hp=15;
+      puzzle_solve="False";
+      continue_button="False";
+      dooropen.close();
     }
   }
 }
